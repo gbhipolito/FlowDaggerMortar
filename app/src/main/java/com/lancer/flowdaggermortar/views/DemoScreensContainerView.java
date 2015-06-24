@@ -36,30 +36,30 @@ import static com.lancer.flowdaggermortar.DemoApplication.START;
 import static com.lancer.flowdaggermortar.DemoApplication.TAG;
 
 /** A FrameLayout that can show screens for a {@link flow.Flow}. */
-public class DemoScreenContainerView extends FrameLayout
+public class DemoScreensContainerView extends FrameLayout
     implements HandlesBack, PathContainerView {
   private final PathContainer container;
   private boolean disabled;
 
   @SuppressWarnings("UnusedDeclaration") // Used by layout inflation, of course!
-  public DemoScreenContainerView(Context context, AttributeSet attrs) {
+  public DemoScreensContainerView(Context context, AttributeSet attrs) {
     this(context, attrs, new SimpleScreenContainer(R.id.screen_switcher_tag, Path.contextFactory()));
-    Log.e(TAG, START + "DemoScreenContainerView constructor context attrs");
+    Log.e(TAG, START + "DemoScreensContainerView constructor context attrs"); // should be called before the this constructor to avoid confusion, but error
   }
 
   /**
    * Allows subclasses to use custom {@link flow.path.PathContainer} implementations. Allows the use
    * of more sophisticated transition schemes, and customized context wrappers.
    */
-  protected DemoScreenContainerView(Context context, AttributeSet attrs, PathContainer container) {
+  protected DemoScreensContainerView(Context context, AttributeSet attrs, PathContainer container) {
     super(context, attrs);
-    Log.e(TAG, START + "DemoScreenContainerView constructor context attrs, container");
+    Log.e(TAG, START + "DemoScreensContainerView constructor context attrs container");
     this.container = container;
   }
 
   @Override
   public boolean dispatchTouchEvent(MotionEvent ev) {
-    Log.e(TAG, START + "DemoScreenContainerView dispatchTouchEvent");
+    Log.e(TAG, START + "DemoScreensContainerView dispatchTouchEvent");
     return !disabled && super.dispatchTouchEvent(ev);
   }
 
@@ -68,7 +68,7 @@ public class DemoScreenContainerView extends FrameLayout
    */
   @Override
   public ViewGroup getCurrentChild() {
-    Log.e(TAG, START + "DemoScreenContainerView getCurrentChild");
+    Log.e(TAG, START + "DemoScreensContainerView getCurrentChild");
     return (ViewGroup) getContainerView().getChildAt(0);
   }
 
@@ -77,7 +77,7 @@ public class DemoScreenContainerView extends FrameLayout
    */
   @Override
   public ViewGroup getContainerView() {
-    Log.e(TAG, START + "DemoScreenContainerView getContainerView");
+    Log.e(TAG, START + "DemoScreensContainerView getContainerView");
     return this;
   }
 
@@ -86,11 +86,11 @@ public class DemoScreenContainerView extends FrameLayout
    */
   @Override
   public void dispatch(Flow.Traversal traversal, final Flow.TraversalCallback callback) {
-    Log.e(TAG, START + "DemoScreenContainerView dispatch");
+    Log.e(TAG, START + "DemoScreensContainerView dispatch");
     disabled = true;
     container.executeTraversal(this, traversal, new Flow.TraversalCallback() {
       @Override public void onTraversalCompleted() {
-        Log.e(TAG, START + "DemoScreenContainerView container onTraversalCompleted");
+        Log.e(TAG, START + "DemoScreensContainerView container onTraversalCompleted");
         callback.onTraversalCompleted();
         disabled = false;
       }
@@ -102,7 +102,7 @@ public class DemoScreenContainerView extends FrameLayout
    */
   @Override
   public boolean onBackPressed() {
-    Log.e(TAG, START + "DemoScreenContainerView onBackPressed");
+    Log.e(TAG, START + "DemoScreensContainerView onBackPressed");
     return BackSupport.onBackPressed(getCurrentChild());
   }
 } // end FrameScreenContainerView

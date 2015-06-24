@@ -53,7 +53,7 @@ public class DemoActivity extends Activity implements Flow.Dispatcher {
         BundleServiceRunner.getBundleServiceRunner(activityScope).onCreate(savedInstanceState);
 
         Log.e(TAG, START + "DemoActivity setContentView");
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_demo);
         container = (PathContainerView)findViewById(R.id.container);
         containerHandlesBack = (HandlesBack)container;
         Log.e(TAG, START + "DemoActivity create flow delegate");

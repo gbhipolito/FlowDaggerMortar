@@ -26,13 +26,13 @@ public class DemoButtonView extends LinearLayout {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         Log.e(TAG, START + "DemoButtonView onAttachedToWindow");
-        Log.e(TAG, START + "DemoButtonView take view");
+        Log.e(TAG, START + "DemoButtonView presenter take view");
         presenter.takeView(this);
     }
 
     @Override
     protected void onDetachedFromWindow() {
-        Log.e(TAG, START + "DemoButtonView drop view");
+        Log.e(TAG, START + "DemoButtonView presenter drop view");
         presenter.dropView(this);
         super.onDetachedFromWindow();
         Log.e(TAG, START + "DemoButtonView onDetachedFromWindow");

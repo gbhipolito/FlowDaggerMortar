@@ -4,7 +4,7 @@ A simple app (w/ comments and logs) showing MVP pattern using Square's Flow, Dag
 
 Also planning on using Square's Butterknife to inject views from xml.
  
-If you want the simplest version, running but does nothing, Checkout the first commits.
+If you want the simplest version, running but does nothing, Checkout the first commits. Use the logcat to see the sequence of events when you open the app, when you rotate, close the app, etc.
 
 I just used Log.e to easily see the logs.
 

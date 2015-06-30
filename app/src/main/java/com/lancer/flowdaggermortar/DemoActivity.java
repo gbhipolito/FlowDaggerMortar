@@ -46,7 +46,7 @@ public class DemoActivity extends Activity implements Flow.Dispatcher {
         if(activityScope == null) {
             activityScope = parentScope.buildChild()
                     .withService(BundleServiceRunner.SERVICE_NAME, new BundleServiceRunner())
-                    .withService(DemoButtonPresenter.class.getName(), new DemoButtonPresenter())
+//                    .withService(DemoButtonPresenter.class.getName(), new DemoButtonPresenter())
                     .build(scopeName);
         }
 //        ObjectGraphService.inject(activityScope, this);
@@ -77,6 +77,7 @@ public class DemoActivity extends Activity implements Flow.Dispatcher {
 
     @Override
     protected void onResume() {
+        // hook to flow callbacks so that flow can handle config changes too
         Log.e(TAG, START + "DemoActivity onResume");
         super.onResume();
         flowDelegate.onResume();
@@ -91,6 +92,7 @@ public class DemoActivity extends Activity implements Flow.Dispatcher {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        // hook to flow & mortar callbacks so that flow & mortar can handle config changes too
         Log.e(TAG, START + "DemoActivity onSaveInstanceState");
         super.onSaveInstanceState(outState);
         flowDelegate.onSaveInstanceState(outState);

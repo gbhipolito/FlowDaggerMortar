@@ -44,6 +44,7 @@ public class SimpleScreenContainer extends PathContainer {
 
   public SimpleScreenContainer(int tagKey, PathContextFactory contextFactory) {
     super(tagKey);
+    Log.e(TAG, START + "SimpleScreenContainer constructor");
     this.contextFactory = contextFactory;
   }
 

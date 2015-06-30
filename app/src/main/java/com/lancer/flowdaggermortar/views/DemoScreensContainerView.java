@@ -23,12 +23,12 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.lancer.flowdaggermortar.squaresupport.DemoScreenContextFactory;
 import com.lancer.flowdaggermortar.R;
 import com.lancer.flowdaggermortar.squaresupport.BackSupport;
 import com.lancer.flowdaggermortar.squaresupport.HandlesBack;
 import com.lancer.flowdaggermortar.squaresupport.SimpleScreenContainer;
 import flow.Flow;
-import flow.path.Path;
 import flow.path.PathContainer;
 import flow.path.PathContainerView;
 
@@ -43,7 +43,8 @@ public class DemoScreensContainerView extends FrameLayout
 
   @SuppressWarnings("UnusedDeclaration") // Used by layout inflation, of course!
   public DemoScreensContainerView(Context context, AttributeSet attrs) {
-    this(context, attrs, new SimpleScreenContainer(R.id.screen_switcher_tag, Path.contextFactory()));
+//    this(context, attrs, new SimpleScreenContainer(R.id.screen_switcher_tag, Path.contextFactory()));
+    this(context, attrs, new SimpleScreenContainer(R.id.screen_switcher_tag, new DemoScreenContextFactory()));
     Log.e(TAG, START + "DemoScreensContainerView constructor context attrs"); // should be called before the this constructor to avoid confusion, but error
   }
 

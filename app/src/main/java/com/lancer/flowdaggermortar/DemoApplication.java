@@ -3,11 +3,19 @@ package com.lancer.flowdaggermortar;
 import android.app.Application;
 import android.util.Log;
 
+import com.lancer.flowdaggermortar.presenters.DemoButtonPresenter;
+import com.lancer.flowdaggermortar.squaresupport.ObjectGraphService;
+import com.lancer.flowdaggermortar.views.DemoApplicationModule;
+
+import javax.inject.Inject;
+
+import dagger.ObjectGraph;
 import mortar.MortarScope;
 
 public class DemoApplication extends Application {
     public static final String TAG = "FlowDaggerMortar";
     public static final String START = "^^^^^>>>";
+    public static final String APPOBJGRAPH = "ApplicationObjectGraph";
 
     private MortarScope applicationScope;
 
@@ -16,11 +24,16 @@ public class DemoApplication extends Application {
         // see comment on Activity's getSystemService
         Log.e(TAG, START + "DemoApplication getSystemService: " + name);
 
+//        // create dagger object graph
+//        ObjectGraph objectGraph = ObjectGraph.create(new DemoApplicationModule());
+//        objectGraph.inject(this);
+
         // check if mortar (Application)scoped object graph exists, if not, make one
         if(applicationScope == null) {
             Log.e(TAG, START + "DemoApplication build root scope");
             applicationScope = MortarScope.buildRootScope()
-//                    .withService(ObjectGraphService.SERVICE_NAME, ObjectGraph.create(new DemoModule()))
+//                    .withService(ObjectGraphService.SERVICE_NAME, ObjectGraph.create(new DemoApplicationModule()))
+//                    .withService(APPOBJGRAPH, objectGraph)
                     .build(getClass().getName());
         }
 

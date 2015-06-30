@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.lancer.flowdaggermortar.views.DemoButtonView;
+
+import javax.inject.Singleton;
+
 import mortar.MortarScope;
 import mortar.ViewPresenter;
 
 import static com.lancer.flowdaggermortar.DemoApplication.START;
 import static com.lancer.flowdaggermortar.DemoApplication.TAG;
 
+@Singleton
 public class DemoButtonPresenter extends ViewPresenter<DemoButtonView> {
 
     @Override

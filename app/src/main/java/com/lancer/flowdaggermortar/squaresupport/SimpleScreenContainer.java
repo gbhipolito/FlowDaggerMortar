@@ -63,7 +63,7 @@ public class SimpleScreenContainer extends PathContainer {
     context = PathContext.create(oldPath, to, contextFactory);
     int layout = getLayout(to);
     newView = LayoutInflater.from(context)
-        .cloneInContext(context)
+        .cloneInContext(context) // not sure why cloned
         .inflate(layout, containerView, false);
 
     View fromView = null;

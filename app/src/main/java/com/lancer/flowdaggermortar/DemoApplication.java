@@ -3,13 +3,6 @@ package com.lancer.flowdaggermortar;
 import android.app.Application;
 import android.util.Log;
 
-import com.lancer.flowdaggermortar.presenters.DemoButtonPresenter;
-import com.lancer.flowdaggermortar.squaresupport.ObjectGraphService;
-import com.lancer.flowdaggermortar.views.DemoApplicationModule;
-
-import javax.inject.Inject;
-
-import dagger.ObjectGraph;
 import mortar.MortarScope;
 
 public class DemoApplication extends Application {

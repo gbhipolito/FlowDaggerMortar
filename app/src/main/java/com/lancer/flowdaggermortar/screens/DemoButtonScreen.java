@@ -6,14 +6,6 @@ import com.lancer.flowdaggermortar.R;
 import com.lancer.flowdaggermortar.presenters.DemoButtonPresenter;
 import com.lancer.flowdaggermortar.squaresupport.Layout;
 import com.lancer.flowdaggermortar.squaresupport.Screen;
-import com.lancer.flowdaggermortar.views.DemoApplicationModule;
-import com.lancer.flowdaggermortar.views.DemoButtonView;
-
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
-import flow.path.Path;
 
 import static com.lancer.flowdaggermortar.DemoApplication.START;
 import static com.lancer.flowdaggermortar.DemoApplication.TAG;
@@ -21,6 +13,7 @@ import static com.lancer.flowdaggermortar.DemoApplication.TAG;
 @Layout(R.layout.demo_btn_view)
 public class DemoButtonScreen extends Screen {
 // a screen just extends Screen
+// you may use dagger module or create annotation @withpresenter/@withmodule to make this more flexible, of course you'll have to handle that
 
     public DemoButtonScreen() {
         super();

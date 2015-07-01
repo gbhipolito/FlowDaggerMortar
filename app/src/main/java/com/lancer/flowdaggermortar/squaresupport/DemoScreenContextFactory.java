@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
-import com.lancer.flowdaggermortar.squaresupport.Screen;
 
 import flow.path.Path;
 import flow.path.PathContextFactory;
@@ -17,22 +16,22 @@ import static com.lancer.flowdaggermortar.DemoApplication.TAG;
 
 public class DemoScreenContextFactory implements PathContextFactory {
 
-    private ScreenScopeContext screenScopeContext;
-
     @Override
     public Context setUpContext(Path path, Context parentContext) {
         Log.e(TAG, START + "DemoScreenContextFactory setUpContext: " + path.getClass().getName() + " " + parentContext.getClass().getName());
-        screenScopeContext = new ScreenScopeContext(parentContext, path);
-        return screenScopeContext;
+        // create a mortar scope & context, scoped only to a single screen
+        return new ScreenScopeContext(parentContext, path);
     } // end setUpContext
 
     @Override
     public void tearDownContext(Context context) {
+        // this method is only called when going to another screen, not in onDestroy / config change
+        // w/c means we can use this to destroy objects that we want destroyed when we change screen but survive on config change
+        // the context provided here is the same context that we returned in setUpContext (or clone?)
         Log.e(TAG, START + "DemoScreenContextFactory tearDownContext: " + context.getClass().getName());
-        if(screenScopeContext != null) {
-            screenScopeContext.destroyScope();
-            screenScopeContext = null;
-        }
+        ScreenScopeContext screenScopeContext = (ScreenScopeContext)context;
+        screenScopeContext.destroyScope();
+        screenScopeContext = null;
     } // end tearDownContext
 
     private class ScreenScopeContext extends ContextWrapper {
@@ -45,11 +44,11 @@ public class DemoScreenContextFactory implements PathContextFactory {
             Log.e(TAG, START + "ScreenScopeContext constructor");
 
             parentScope = MortarScope.getScope(parentContext);
-            String scopeName = getClass().getName();
+            String presenterName = ((Screen)path).getPresenterName();
+            String scopeName = getClass().getName() + presenterName;
             screenScope = parentScope.findChild(scopeName);
             if(screenScope == null) {
                 Log.e(TAG, START + "ScreenScopeContext build screen scope");
-                String presenterName = ((Screen)path).getPresenterName();
                 try {
                     screenScope = parentScope.buildChild()
                             .withService(presenterName, Class.forName(presenterName).newInstance())
@@ -61,6 +60,7 @@ public class DemoScreenContextFactory implements PathContextFactory {
         } // end ScreenScopeContext constructor
 
         public void destroyScope() {
+            // destroy this scope (included objects that it provides, specially the presenter) because we will change screen
             if(screenScope != null) {
                 Log.e(TAG, START + "ScreenScopeContext destroy screen scope");
                 screenScope.destroy();

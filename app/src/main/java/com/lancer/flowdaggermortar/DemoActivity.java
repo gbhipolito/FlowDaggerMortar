@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import com.lancer.flowdaggermortar.presenters.DemoButtonPresenter;
 import com.lancer.flowdaggermortar.screens.DemoButtonScreen;
 import com.lancer.flowdaggermortar.squaresupport.GsonParceler;
 import com.lancer.flowdaggermortar.squaresupport.HandlesBack;
@@ -46,7 +45,6 @@ public class DemoActivity extends Activity implements Flow.Dispatcher {
         if(activityScope == null) {
             activityScope = parentScope.buildChild()
                     .withService(BundleServiceRunner.SERVICE_NAME, new BundleServiceRunner())
-//                    .withService(DemoButtonPresenter.class.getName(), new DemoButtonPresenter())
                     .build(scopeName);
         }
 //        ObjectGraphService.inject(activityScope, this);

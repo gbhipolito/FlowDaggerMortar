@@ -87,7 +87,13 @@ public class SimpleScreenContainer extends PathContainer {
   } // end performTraversal
 
   protected PathContext getOldPath(final ViewGroup containerView) {
-    return PathContext.root(containerView.getContext());
+//    return PathContext.root(containerView.getContext());
+//    return PathContext.get(containerView.getChildAt(0).getContext());
+    if (containerView.getChildCount() > 0) {
+      return PathContext.get(containerView.getChildAt(0).getContext());
+    } else {
+      return PathContext.root(containerView.getContext());
+    }
   }
 
   protected int getLayout(Path path) {

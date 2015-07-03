@@ -6,9 +6,9 @@ I also used ButterKnife just to bind views to java from xml, instead of using fi
 If you want the simplest version, running but does nothing, Checkout the first commits. Use the logcat to see the sequence of events when you open the app, when you rotate, close the app, etc.
 I just used Log.e to easily see the logs. You can also use breakpoint and debug so you can see more of what's happening.
 
-I place in package 'squaresupport' those classes that I think would be better if included in the libraries either as part of the API itself (e.g. Layout, HandlesBack) or as templates/defaults (e.g. SimpleScreenContainer, GsonParceler).
+I place in package 'squaresupport' those classes that I think would be better if included in the libraries either as part of the API itself (e.g. Layout, HandlesBack) or as templates/defaults (e.g. SimpleScreenContainer, GsonParceler) because they are reusable.
 
-Most of the codes are just boilerplates. Of course you wouldn't appreciate all those boilerplates yet because the app is too simple. You'll appreciate them more in a much more complicated app. Not sure but maybe for now I'll stop here, as going further might make the app not "simple (I think)" anymore. Maybe I (or anyone better) could create a separate app for that (for those who got the basics already), that would showcase how useful Mortar+Flow+Dagger is in a real world app. Square's Flow and Mortar examples are one, but really complicated (I still don't understand some parts), but good I think.
+Most of the codes are just boilerplates. Of course you wouldn't appreciate all those boilerplates yet because the app is too simple. You'll appreciate them more in a much more complicated app. Not sure but maybe for now I'll stop here, as going further might make the app not "simple (I think)" anymore. Maybe I (or anyone better) could create a separate app for that (for those who got the basics already), that would showcase how useful Mortar+Flow+Dagger is in a real world app. Square's Flow and Mortar examples are one, but really complicated (I still don't understand some parts, I just reused some that I think are reusable), but good I think.
 
 Yes, you would be asking why don't they just remove all those boilerplates and just make them work automagically.. I think that would make it more confusing and harder to read, should be balanced between boilerplate and magic.
 Though I still hope they could improve on the boilerplates, via templates/defaults maybe? I think lots of experiments, experience, patience, open mind, and perseverance are needed to learn these libraries.
@@ -16,10 +16,13 @@ Though I still hope they could improve on the boilerplates, via templates/defaul
 # Recommended way of learning.
 Here are my recommendations on how you should begin to study these libraries so you can appreciate them and learn progressively.  
 Don't go straight to this app.  
-Study first what is dependency injection/inversion of control and MVP pattern. Also study the concept of singletons, garbage collection, and (something not common) using Contexts for scoping/retaining object instances (though I hope Google or Square could provide simple explanations/tutorials for that).
-And then for the libraries. Study first what Dagger is (as Mortar is built on top of Dagger). And then after that, you can study Mortar and Flow simultaneously, because they really go hand in hand - if you're going to use one, better use them both. But be sure to understand and keep in mind the difference of their purposes. They work in tandem, but they're different.
+Study/review first what is dependency injection/inversion of control and MVP pattern. Also study the concept of singletons, garbage collection, java reflection api, and (something not common) using Contexts for scoping/retaining object instances (though I hope Google or Square could provide simple explanations/tutorials for that).
+And then for the libraries. Study first what Dagger(1&2) is (as they said Mortar is built on top of Dagger). And then after that, you can study Mortar and Flow simultaneously, because they really go hand in hand - if you're going to use one, better use them both. But be sure to understand and keep in mind the difference of their purposes. They work in tandem, but they're different.
 
 Here are my suggested links (in my personal order):
+
+Java Reflection:  
+https://youtu.be/agnblS47F18  
 
 Dagger and Dependency Injection:  
 http://www.infoq.com/presentations/Dagger  
